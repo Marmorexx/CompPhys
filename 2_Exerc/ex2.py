@@ -247,8 +247,7 @@ plt.plot(f[0],f[1], label='m3')
 plt.xlabel('x')
 plt.ylabel('y')
 plt.legend()
-plt.savefig('fig2a.pdf')
-
+plt.show()
 # }}}
 
 # }}}
@@ -308,7 +307,7 @@ plt.plot(y2[0],y2[1],'*',color='black')
 plt.xlabel('x')
 plt.ylabel('y')
 plt.legend()
-plt.savefig('fig2b.pdf')
+plt.show()
 
 # }}}
 
@@ -343,7 +342,6 @@ plt.plot(taxis[1:], E[1:])
 plt.xlabel('t')
 plt.ylabel('Energy Error')
 plt.yscale('log')
-plt.savefig('test.pdf')
 plt.show()
 
 
