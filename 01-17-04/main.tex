@@ -1,0 +1,95 @@
+
+\documentclass{article}
+
+\usepackage{polyglossia}
+	\setmainlanguage{german}
+\usepackage{amsmath}
+\usepackage{siunitx}
+\usepackage[margin=4cm]{geometry}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{amssymb}
+
+\title{Introduction to Computational Physics}
+\author{Prof. Ralf Klessen \& Prof. Rainer Spurzem}
+
+\begin{document}
+
+\maketitle
+\newpage
+
+% {{{ 1 - Administration
+\section{Administration}
+
+Recieve Homework assignment on wednesday, hand in next week's Friday.
+Tutorials will start 26.04.2019
+
+Tutor Email: yun@mpia.de
+
+220 Points - 60\% required on the exercise Sheets
+
+\textit{The art of scientific Computing} (Literature recommendation) \\
+% }}}
+
+% {{{ 2 - Week 1
+This lecture is all about making good choices. For example we can approximate
+\( \pi \) by creating a geometric shape and counting the circumference while
+adding corners. For the algortihm we should use only additions, no substractions
+, since that will midigate rounding errors better. 
+
+\section*{Ordinary Differential Equations} 
+\begin{enumerate}
+    \item Example: \textbf{Gravitational 2-Body Problem}\\
+	Look at relative Position between two bodies
+	\[ 
+	    \vec r = \vec r_1 - \vec r_2
+	\]
+	Newton:
+	\[ 
+	    \vec \ddot r = \frac{\partial ^2 \bar r}{\partial t ^2} =
+	    -G \frac{M}{r^2} \frac{\bar r}{r}
+	\]
+	\[ 
+	    r = | \bar r | ; G = 6.67 \cdot 10^{-8} \si{cm^3/gs^2} 
+	\]
+	Force 2 on 1:
+	\[ 
+	    \bar F _{12} = m _{1} \bar a _{1}
+	\]
+	Force 1 on 2:
+	\[ 
+	    \bar F _{21} = m _{2} \bar a _{2} 
+	\]
+	Newton:
+	\[ 
+	    \bar F _{21} = - \bar F _{12} 
+	\rightarrow \bar a _2 = - \frac{m_1}{m_2} \bar a_1
+	\]
+	\[ 
+	    \bar a = \bar a_1 - \bar a_2 = \bar a_1 + \frac{m_1}{m_2} \bar a_1
+	    = \frac{m_1 + m _2}{m_1 m_2} m_1 \bar a_1 = \frac{m_1 + m _2}{m_1 m_2}
+	    \bar F_{12}
+	\]
+	\[ 
+	    \mu = \frac{m_1 + m _2}{m_1 m_2}
+	\]
+	\[ 
+	    \mu  \ddot \bar r = -G \frac{m_1 m_2}{r^2} \frac{\bar r}{r}
+	\]
+	How t simplify?
+	\[ 
+	    \bar \dot r = \bar u
+	\]
+	\[ 
+	    \bar \dot u = - \frac{GM}{r^2} \frac{r^2}{r}
+	\]
+	ODE of order N \( \rightarrow \) system of 1st order ODEs
+	
+	
+	
+
+\end{enumerate}
+% }}}
+
+\end{document}
+
