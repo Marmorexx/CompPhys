@@ -42,7 +42,6 @@ plt.plot(x_vector, y_vector, label='Numerical Solution')
 plt.plot(x_vector, analytical_solution(x_vector), label='Analytical solution')
 plt.xlabel('Time')
 plt.legend()
-plt.savefig('1_h_eq_0p1.pdf')
-plt.show
+plt.show()
 
 # Be advised that the integration can take a while for large values of n (e.g >=10^5).
