@@ -11,16 +11,16 @@ def Proj(v,e):
 def GramSchmidt(a): # a is the input matrix (consisting of COLUMN VECTORS!!!)
     dim = np.shape(a)[0] # Dimension of Vector
     shape = np.shape(a)
-    u = np.ndarray((shape)) # Vectors of orthogonal base
-    e = np.ndarray((shape)) # Unit Vectors for our calculation
-    R = np.ndarray((shape)) # Triagonal Matrix R
-    
+    u = np.zeros((shape)) # Vectors of orthogonal base
+    e = np.zeros((shape)) # Unit Vectors for our calculation
+    R = np.zeros((shape)) # Triagonal Matrix R
+
     # Calculate Orthogonal basis
     for i in range(dim):
         u[i] = a[i]
         e[i] = u[i]/np.linalg.norm(u[i])
         print("e_"+ str(i), " = ", e[i])
-        for j in range(i-1):
+        for j in range(i):
             u[i] -= Proj(a[i],e[j])
         print("u_"+str(i), " = ", u[i])
 
@@ -29,14 +29,23 @@ def GramSchmidt(a): # a is the input matrix (consisting of COLUMN VECTORS!!!)
         for j in range(i,np.shape(u)[0]):
             R[i][j] = np.dot(e[i],a[j])
 
-    return u, R
+    return e, R
+
+########################## Enter Matrix here ###################################
 
 a = np.ndarray((3,3)) # Contains the COLUMN Vectors of an Orthogonal Matrix (T)
-a[0] = 1/3*np.array([2,1,2])
-a[1] = 1/3*np.array([-2,2,1])
-a[2] = 1/3*np.array([1,2,-2])
+a[0] = np.array([2,1,2])
+a[1] = np.array([-2,2,1])
+a[2] = np.array([1,2,-2])
 
-u, R = GramSchmidt(a)
+########################## Enter Matrix here ###################################
 
-print("u =\n", u)
+e, R = GramSchmidt(a)
+
+print("a =\n", a)
+print("e =\n", e)
 print("R =\n", np.round(R,2))
+
+test = np.dot(e,e.T)
+
+print("test =\n", test)
