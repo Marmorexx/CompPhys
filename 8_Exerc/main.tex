@@ -1,0 +1,122 @@
+
+\documentclass{article}
+
+\usepackage[margin=4cm]{geometry}
+\usepackage{polyglossia}
+	\setmainlanguage{english}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{siunitx}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{subcaption}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{listings}
+    \lstset{language=Python,
+	basicstyle=\footnotesize\ttfamily,
+	breaklines=true,
+	framextopmargin=50pt,
+	frame=bottomline,
+	backgroundcolor=\color{white!85!black},
+	commentstyle=\color{blue},
+	keywordstyle=\color{red},
+	stringstyle=\color{orange!80!black}}
+\usepackage{tikz}
+
+\title{Computational Physics - Exercise 8}
+\author{Maurice Donner \and Lukas Häffner}
+
+\begin{document}
+
+\maketitle
+\newpage
+
+\section{Fixed Points of the Lorenz dynamical System}
+
+The Lorenz attractor problem is given by the following coupled set of 
+differential equations
+\begin{align}
+    \dot x &= - \sigma (x - y ) \\
+    \dot y &= rx - y - xz \\
+    \dot z &= xy - bz
+    \label{Lorenz}
+\end{align}
+The fixed points for this problem are \( \lambda_1 = (0,0,0) \) for all \( r \)
+and \( \lambda_{2,3} = (\pm a_0, \pm a_0, r-1 )\) with \( a_0 = 
+    \sqrt{b(r-1)}\) for \( r > 1 \).\\
+In this exercise we want to examine the stability of \( \lambda_{2,3} \) by the
+Jacobian taken at the fixed points, and then looking for its eigenvalues by means
+of finding the zero points of the following characteristic polynomial:
+\begin{align}
+    P(\lambda) = \lambda^3 + (1+b+\sigma)\lambda^2 +b(\sigma+r)\lambda
+    + 2 \sigma b (r-1)
+\end{align}
+We first plot $P(\lambda)$ as a function of \( \lambda \). For that we use
+\( \sigma = 10, b = 8/3 \):
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=9cm]{polynomial.pdf} 
+    \caption{Characteristic Polynomial of the Lorenz attractor} 
+\end{figure}
+To check if the points are stable, one has to examine the area around the point.
+Lies the point in an upwards slope, it is unstable. Otherwise, it is stable.
+In case of a saddle point, no definite answer can be made.\\
+That means the only stable points we have, are the ones for values of
+\( r < 1.3456 \). For larger \( r \) two of the 3 stationary points vanish.\\
+
+Next we determine the (complex) roots for different values of r: \\
+
+\begin{table}[H]
+    \centering
+\begin{tabular}{lrr}
+    \toprule 
+    r & Re(x) & Im(x) \\ \midrule 
+    1.3456 & -11.09 & 0 \\
+    1.3456 & -1.3 & 0 \\
+    1.3456 & -1.28 & 0 \\ \midrule
+    1.5 & -11.13 & 0 \\
+    1.5 & -1.27 & 0.88 \\
+    1.5 & -1.27 & -0.88 \\ \midrule
+    24 & -13.62 & 0 \\
+    24 & -0.02 & 9.49 \\
+    24 & -0.02 & -9.49\\ \midrule
+    28 & -13.85 & 0 \\ 
+    28 & 0.09 & 10.19 \\
+    28 & 0.09 & -10.19 \\
+    \bottomrule 
+\end{tabular}
+\caption{(Complex) roots of the Characteristic Polynomial} 
+\end{table}
+For \( r < r_\text{crit,1} = 1.3456 \), all Fixpoints are \( < 0 \) and real,
+and are hence stable.\\
+For \(  r_\text{crit,1} < r < r_\text{crit,2} = 24.74\), the real parts of the
+fixed points are still \( < 0 \) and the Fixpoints (including the complex
+conjugate ones) are hence stable. \\
+For \( r > r_\text{crit,2} \), the real part of the complex conjugate solutions
+becomes \( > 0 \). The Fixed points are hence unstable. \\
+
+\section{The Lorenz attractor}
+We solve the Lorenz equations numerically with \texttt{rk4}, for the values
+\( r = 0.5, 1.15, 1.3456, 24 \ \text{and} \ 28 \).
+For that we use the previously integrated Runge-Kutta-4 algorithm
+(see Exercise 2). All we need to do is to integrate the coupled Lorenz equations:
+\begin{lstlisting}
+def f(y0,x0): # y0 array that consists of [x,y,z]
+    deriv = np.array([
+    - sig*(y0[0] - y0[1]),
+    r*y0[0] - y0[1] - y0[0]*y0[2],
+    y0[0]*y0[1] - b*y0[2]])
+
+    return deriv
+\end{lstlisting}
+Using \texttt{rk4}, we plot the trajectories for all \( r \) each with Starting
+point \( C_+ \ \text{and} \ C_- \):
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Figure2-1.pdf} 
+    \caption{Determining Fixed points of the Lorenz dynamical System} 
+\end{figure}
+As discussed before, the fixed points for 
+\end{document}
+
