@@ -34,7 +34,7 @@ def rk4(y0, x0, f, h, n, f_args = {}):
     return (yn,xn)
 
 ##### Starting Values #####
-n = 1000   # Steps
+n = int(1.5e4)   # Steps
 h = 0.01    # Stepsize
 sig = 10.0
 b = 8/3
@@ -46,7 +46,7 @@ eps = 1e-3
 fig = plt.figure(figsize=(8, 10))   # Define a figure
 index = 0                           # and an index for arranging the plots
 
-for r in [0.5, 1.15, 3, 24.0, 28.0]: # Calculate for all r
+for r in [0.5, 1.15, 1.3456, 24.0, 28.0]: # Calculate for all r
     for pm in [1, -1]: # Calculate for C+ and C-
         index += 1
 
@@ -62,16 +62,37 @@ for r in [0.5, 1.15, 3, 24.0, 28.0]: # Calculate for all r
         yn, xn = rk4(y0, x0, f, h, n)
 
         ax = fig.add_subplot(5,2,index, projection='3d')
+        # Condition for Plots (TODO clean up later)
         if pm == 1:
-            ax.plot([i[0] for i in yn], [i[1] for i in yn], [i[2] for i in yn],
-                    linewidth=0.8,
-                    label='r = {}, using '.format(r)+r'$c_{+}$')
-            plt.legend()
+            if r > 1:
+                ax.plot([i[0] for i in yn], [i[1] for i in yn], [i[2] for i in yn],
+                        linewidth=0.5,
+                        label='r = {}, using '.format(r)+r'$c_{+}$')
+                ax.scatter(y0[0], y0[1], y0[2], c='red')
+                ax.scatter(y0[0]-eps, y0[1]-eps, y0[2]-eps, c='black')
+                plt.legend()
+            else:
+                ax.plot([i[0] for i in yn], [i[1] for i in yn], [i[2] for i in yn],
+                        linewidth=0.5,
+                        label='r = {}, using '.format(r)+r'$+\varepsilon$')
+                ax.scatter(y0[0], y0[1], y0[2], c='red')
+                ax.scatter(y0[0]-eps, y0[1]-eps, y0[2]-eps, c='black')
+                plt.legend()
         else:
-            ax.plot([i[0] for i in yn], [i[1] for i in yn], [i[2] for i in yn],
-                    linewidth=0.8,
-                    label='r = {}, using '.format(r)+r'$c_{-}$')
-            plt.legend()
+            if r > 1:
+                ax.plot([i[0] for i in yn], [i[1] for i in yn], [i[2] for i in yn],
+                        linewidth=0.5,
+                        label='r = {}, using '.format(r)+r'$c_{-}$')
+                ax.scatter(y0[0], y0[1], y0[2], c='red')
+                ax.scatter(y0[0]-eps, y0[1]-eps, y0[2]-eps, c='black')
+                plt.legend()
+            else:
+                ax.plot([i[0] for i in yn], [i[1] for i in yn], [i[2] for i in yn],
+                        linewidth=0.5,
+                        label='r = {}, using '.format(r)+r'$-\varepsilon$')
+                ax.scatter(y0[0], y0[1], y0[2], c='red')
+                ax.scatter(y0[0]+eps, y0[1]+eps, y0[2]+eps, c='black')
+                plt.legend()
         
         # This fixes the fontsize and makes the plots look less cluttered
         for tick in ax.xaxis.get_major_ticks():
@@ -83,4 +104,3 @@ for r in [0.5, 1.15, 3, 24.0, 28.0]: # Calculate for all r
 
 plt.tight_layout()
 plt.savefig('plot.pdf')
-plt.show()

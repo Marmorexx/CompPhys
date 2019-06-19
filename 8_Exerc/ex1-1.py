@@ -8,8 +8,8 @@ def polynomial(lam, b, sig, r):
 xaxis = np.linspace(-12.5,2.5,1000)
 sig = 10
 b = 8/3
-for r in [0.5, 1.15, 1.3456, 1.5]:
-    plt.plot(xaxis,polynomial(xaxis,b,sig,r), label='r = '+str(r))
+for r in [0.5, 1.0, 1.15, 1.3456, 2]:
+    plt.plot(xaxis,polynomial(xaxis,b,sig,r), linewidth=1.5, label='r = '+str(r))
 
 plt.legend()
 plt.show()

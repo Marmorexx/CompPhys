@@ -63,6 +63,7 @@ eps = 1e-3
 ###########################
 
 # Solve Curve
+plt.xkcd(2,2,3)
 fig = plt.figure(figsize=(8, 4))    # Define a figure
 index = 0                           # and an index for arranging the plots
 
@@ -85,27 +86,28 @@ for pm in [1, -1]: # Calculate for C+ and C-
     if pm == 1:
         print(r'Creating plot for $C_+$...')
         ax.scatter(maxima[:-1], maxima[1:],
-                s=0.3,
+                s=0.5,
                 label='r = {}, using '.format(r)+r'$c_{+}$')
         popt, pcov = curve_fit(linear, maxima[:-190], maxima[1:-189])
         xaxis = np.linspace(26,40,100)
         ax.plot(xaxis, linear(xaxis, popt[0], popt[1]),
-                linewidth=0.5,
+                linewidth=0.9,
                 color='red',
                 label='m = {}'.format(popt[0]))
         plt.legend()
     else:
         print(r'Creating plot for $C_-$...')
         ax.scatter(maxima[:-1], maxima[1:],
-                s=0.3,
+                s=0.5,
                 label='r = {}, using '.format(r)+r'$c_{-}$')
         popt, pcov = curve_fit(linear, maxima[:-190], maxima[1:-189])
         xaxis = np.linspace(26,40,100)
+
+
         ax.plot(xaxis, linear(xaxis, popt[0], popt[1]),
-                linewidth=0.5,
+                linewidth=0.9,
                 color='red',
                 label='m = {}'.format(popt[0]))
         plt.legend()
-
 plt.savefig('plot.pdf')
 plt.show()

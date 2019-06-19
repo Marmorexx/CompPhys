@@ -59,41 +59,40 @@ We first plot $P(\lambda)$ as a function of \( \lambda \). For that we use
     \includegraphics[width=9cm]{polynomial.pdf} 
     \caption{Characteristic Polynomial of the Lorenz attractor} 
 \end{figure}
-To check if the points are stable, one has to examine the area around the point.
-Lies the point in an upwards slope, it is unstable. Otherwise, it is stable.
-In case of a saddle point, no definite answer can be made.\\
-That means the only stable points we have, are the ones for values of
-\( r < 1.3456 \). For larger \( r \) two of the 3 stationary points vanish.\\
-
-Next we determine the (complex) roots for different values of r: \\
-
+To check if the points are stable, one has to examine the eigenvalues of the
+Jacobimatrix at the stationary point. If an eigenvalue has a positive real part,
+then the point is unstable. If all realparts are negative the point is stable.
+That means:
 \begin{table}[H]
     \centering
-\begin{tabular}{lrr}
-    \toprule 
-    r & Re(x) & Im(x) \\ \midrule 
-    1.3456 & -11.09 & 0 \\
-    1.3456 & -1.3 & 0 \\
-    1.3456 & -1.28 & 0 \\ \midrule
-    1.5 & -11.13 & 0 \\
-    1.5 & -1.27 & 0.88 \\
-    1.5 & -1.27 & -0.88 \\ \midrule
-    24 & -13.62 & 0 \\
-    24 & -0.02 & 9.49 \\
-    24 & -0.02 & -9.49\\ \midrule
-    28 & -13.85 & 0 \\ 
-    28 & 0.09 & 10.19 \\
-    28 & 0.09 & -10.19 \\
-    \bottomrule 
-\end{tabular}
-\caption{(Complex) roots of the Characteristic Polynomial} 
+    \begin{tabular}{ll}
+    For $ r < 1 $ & All Solutions unstable, because there is always at least
+    one \( \lambda > 0 \) \\ 
+    For $ 1 < r < 1.3456 $ & all \( \lambda < 0 \) and the Solution is stable \\
+    For $ r > 1.3456 $ & two of the three roots vanish, and the remaining root
+    is $ < 0 $, \\ & so in theory, those solutions are stable too.
+    \end{tabular}
 \end{table}
-For \( r < r_\text{crit,1} = 1.3456 \), all Fixpoints are \( < 0 \) and real,
+Note, that this is only correct for the characteristic Polynomial. Later we will
+see that the Fix Point \( (0,0,0) \) at \( r < 1 \) is indeed stable, since
+the Jacobian has a different shape, and hence, there is a different polynomial.
+In the "smaller" case the only fixpoint is $x=y=z=0$ and all eigenvalues of
+the resulting Jacobimatrix are negative (shown in
+lecture at 12.6). As a result, the simulations for r < 0 reach the
+stable point of $x=y=z=0$ in Figure (\ref{2-1}). \\[.5cm]
+
+Next we determine the (complex) roots for different values of r:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=9cm]{Figure1-2.pdf} 
+    \caption{(Complex) roots of the Characteristic Polynomial} 
+\end{figure}
+For \( 1 < r < r_\text{crit,1} = 1.3456 \), all Fixpoints are \( < 0 \) and real,
 and are hence stable.\\
 For \(  r_\text{crit,1} < r < r_\text{crit,2} = 24.74\), the real parts of the
 fixed points are still \( < 0 \) and the Fixpoints (including the complex
 conjugate ones) are hence stable. \\
-For \( r > r_\text{crit,2} \), the real part of the complex conjugate solutions
+For \( r > r_\text{crit,2} \), the real part of the complex conjugate roots
 becomes \( > 0 \). The Fixed points are hence unstable. \\
 
 \section{The Lorenz attractor}
@@ -115,8 +114,14 @@ point \( C_+ \ \text{and} \ C_- \):
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{Figure2-1.pdf} 
-    \caption{Determining Fixed points of the Lorenz dynamical System} 
+    \caption{Determining Fixed points of the Lorenz dynamical System
+    (the red dot describes the starting point, the black dot the fix point)} 
+    \label{2-1}
 \end{figure}
-As discussed before, the fixed points for 
+As discussed before, the fixed points for $r < 1$ are stable. The same app The
+same applies to all other points until we hit the value \( r_\text{crit,2}
+    \approx 24.74\). Here, there is an oscillation around the fixed point that
+goes on for a while. For large enough \( t \), a second "disk" emerges, and the
+oscillation changes back and forth between the two.
 \end{document}
 
