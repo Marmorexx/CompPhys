@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1560956507 "main.tex" "main.pdf" "main" 1560956508
+["pdflatex"] 1560956709 "main.tex" "main.pdf" "main" 1560956710
   "/etc/texmf/web2c/texmf.cnf" 1542647551 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
@@ -146,10 +146,10 @@
   "/var/lib/texmf/web2c/xetex/xelatex.fmt" 1542647855 3559118 230579da8c4b5617148b01ce5cc32ce2 ""
   "Figure1-2.pdf" 1560955039 13128 5fe38946058ecc233f176865c678011c ""
   "Figure2-1.pdf" 1560956484 315574 7e122c8ce55db8743a0d8c9c33fa57f4 ""
-  "main.aux" 1560956508 946 9b58973ff5d921e82888b01cf37df343 ""
-  "main.tex" 1560956507 4886 d01f53612e7181cafc115a210435f98c ""
+  "main.aux" 1560956710 946 9b58973ff5d921e82888b01cf37df343 ""
+  "main.tex" 1560956708 4893 62e114b360f1c0a853b95865384618f0 ""
   "polynomial.pdf" 1560951108 12406 1071950016a1075d3f78495e418f80c8 ""
   (generated)
-  "main.aux"
   "main.pdf"
+  "main.aux"
   "main.log"
