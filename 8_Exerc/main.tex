@@ -76,7 +76,7 @@ That means:
 Note, that this is only correct for the characteristic Polynomial. Later we will
 see that the Fix Point \( (0,0,0) \) at \( r < 1 \) is indeed stable, since
 the Jacobian has a different shape, and hence, there is a different polynomial.
-In the \( r < 1 \) <++> case the only fixpoint is $x=y=z=0$ and all eigenvalues of
+In the \( r < 1 \)  case the only fixpoint is $x=y=z=0$ and all eigenvalues of
 the resulting Jacobimatrix are negative (shown in
 lecture at 12.6). As a result, the simulations for r < 0 reach the
 stable point of $x=y=z=0$ in Figure (\ref{2-1}). \\[.5cm]
@@ -113,7 +113,7 @@ Using \texttt{rk4}, we plot the trajectories for all \( r \) each with Starting
 point \( C_+ \ \text{and} \ C_- \):
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{Figure2-1.pdf} 
+    \includegraphics[width=.95\textwidth]{Figure2-1.pdf} 
     \caption{Determining Fixed points of the Lorenz dynamical System
     (the red dot describes the starting point, the black dot the fix point)} 
     \label{2-1}
@@ -122,6 +122,39 @@ As discussed before, the fixed points for $r < 1$ are stable. The same app The
 same applies to all other points until we hit the value \( r_\text{crit,2}
     \approx 24.74\). Here, there is an oscillation around the fixed point that
 goes on for a while. For large enough \( t \), a second "disk" emerges, and the
-oscillation changes back and forth between the two.
+oscillation changes back and forth between the two.\\[.5cm]
+
+Finally, we take a closer look at the case \( r = 27 \). We determine the
+sequence \( z_k \), where \( z_k \) is a local maximum in z on the solution
+curve after \( k \) Periods. For that, we write a small block of code, that
+extracts all local maxima from the solution curve by a simple algorithm, and
+writes them into a one-dimensional array:
+\begin{lstlisting}
+def checkz(array):
+    initial = array[0][2]
+    up = True
+    maxima = ([])
+    for n in range(array.shape[0]-1):
+        if up == True:
+            if array[n][2] > array[n+1][2]:
+                up = False
+                maxima.append(array[n][2])
+        if up == False:
+            if array[n][2] < array[n+1][2]:
+                up = True
+    return maxima
+\end{lstlisting}
+Then we plot \( z_{k \text{+1}} \) as a function of \( z_k \).
+For small z, we see a linear relationship, to which we create a fit and determine
+its slope:
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\textwidth]{Figure2-2.pdf} 
+    \caption{Determining the slope of $z_{k\text{+1}}/z_k$}
+    \label{2-2}
+\end{figure}
+As seen in Figure \ref{2-2}, \( m > 1 \). The theory of discrete maps says,
+that there is no periodic solution if \( |m| > 1 \). For \( r = 27 > 24.74 \)
+that coincides with our previous assumption.
 \end{document}
 
