@@ -85,7 +85,7 @@ for pm in [1, -1]: # Calculate for C+ and C-
     ax = fig.add_subplot(1,2,index)
     if pm == 1:
         print(r'Creating plot for $C_+$...')
-        ax.scatter(maxima[:-1], maxima[1:],
+        ax.plot(maxima[:-1], maxima[1:],
                 s=0.5,
                 label='r = {}, using '.format(r)+r'$c_{+}$')
         popt, pcov = curve_fit(linear, maxima[:-190], maxima[1:-189])
@@ -97,7 +97,7 @@ for pm in [1, -1]: # Calculate for C+ and C-
         plt.legend()
     else:
         print(r'Creating plot for $C_-$...')
-        ax.scatter(maxima[:-1], maxima[1:],
+        ax.plot(maxima[:-1], maxima[1:],
                 s=0.5,
                 label='r = {}, using '.format(r)+r'$c_{-}$')
         popt, pcov = curve_fit(linear, maxima[:-190], maxima[1:-189])

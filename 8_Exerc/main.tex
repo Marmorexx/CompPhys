@@ -6,6 +6,7 @@
 	\setmainlanguage{english}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{enumitem}
 \usepackage{siunitx}
 \usepackage{float}
 \usepackage{booktabs}
@@ -87,10 +88,10 @@ Next we determine the (complex) roots for different values of r:
     \includegraphics[width=9cm]{Figure1-2.pdf} 
     \caption{(Complex) roots of the Characteristic Polynomial} 
 \end{figure}
-For \( 1 < r < r_\text{crit,1} = 1.3456 \), all Fixpoints are \( < 0 \) and real,
-and are hence stable.\\
+For \( 1 < r < r_\text{crit,1} = 1.3456 \), all roots are \( < 0 \) and real,
+and the fixpoints are hence stable.\\
 For \(  r_\text{crit,1} < r < r_\text{crit,2} = 24.74\), the real parts of the
-fixed points are still \( < 0 \) and the Fixpoints (including the complex
+roots are still \( < 0 \) and the Fixpoints (including the complex
 conjugate ones) are hence stable. \\
 For \( r > r_\text{crit,2} \), the real part of the complex conjugate roots
 becomes \( > 0 \). The Fixed points are hence unstable. \\
@@ -118,7 +119,7 @@ point \( C_+ \ \text{and} \ C_- \):
     (the red dot describes the starting point, the black dot the fix point)} 
     \label{2-1}
 \end{figure}
-As discussed before, the fixed points for $r < 1$ are stable. The same app The
+As discussed before, the fixed point for all $r < 1$ is stable. The
 same applies to all other points until we hit the value \( r_\text{crit,2}
     \approx 24.74\). Here, there is an oscillation around the fixed point that
 goes on for a while. For large enough \( t \), a second "disk" emerges, and the
