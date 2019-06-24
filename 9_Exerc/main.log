@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99996 (TeX Live 2016/Debian) (preloaded format=xelatex 2018.11.19)  24 JUN 2019 16:41
+This is XeTeX, Version 3.14159265-2.6-0.99996 (TeX Live 2016/Debian) (preloaded format=xelatex 2018.11.19)  24 JUN 2019 16:48
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1017,14 +1017,16 @@ File: Fig1-1.pdf Graphic file (type QTm)
 File: Fig1-2.pdf Graphic file (type QTm)
 <use  "Fig1-2.pdf" > [2]
 File: Fig1-3.pdf Graphic file (type QTm)
-<use  "Fig1-3.pdf" > [3] (./main.aux) ) 
+<use  "Fig1-3.pdf" >
+File: Fig1-4.pdf Graphic file (type QTm)
+<use  "Fig1-4.pdf" > [3] [4] (./main.aux) ) 
 Here is how much of TeX's memory you used:
- 27331 strings out of 493068
- 604053 string characters out of 6137719
+ 27333 strings out of 493068
+ 604073 string characters out of 6137719
  625064 words of memory out of 5000000
- 30868 multiletter control sequences out of 15000+600000
+ 30869 multiletter control sequences out of 15000+600000
  11769 words of font info for 76 fonts, out of 8000000 for 9000
  1347 hyphenation exceptions out of 8191
  59i,10n,94p,10414b,1068s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on main.pdf (3 pages).
+Output written on main.pdf (4 pages).

@@ -42,8 +42,8 @@ def createarrays(a,m,c,initVal,steps):
 # createarrays(a,m,c,x0,steps) # 
 ################################
 
-r1, rnorm1 = createarrays(106,6075,1283,1,1000)
-r2, rnorm2 = createarrays(106,6075,1283,2,1000) #just change initial value
+r1, rnorm1 = createarrays(1060,60751,12835,1,1000)
+r2, rnorm2 = createarrays(1060,60751,12835,2,1000) #just change initial value
 
 plt.figure()
 plt.scatter(rnorm1, rnorm2, s=5)
