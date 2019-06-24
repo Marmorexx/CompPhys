@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1561384830 "main.tex" "main.pdf" "main" 1561384831
+["pdflatex"] 1561387309 "main.tex" "main.pdf" "main" 1561387310
   "/etc/texmf/web2c/texmf.cnf" 1542647551 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
@@ -148,12 +148,12 @@
   "/usr/share/texlive/texmf-dist/web2c/texmf.cnf" 1488610416 31340 0f53f8665296bf8fe6c697f9505e31d8 ""
   "/usr/share/texmf/web2c/texmf.cnf" 1488610416 31340 0f53f8665296bf8fe6c697f9505e31d8 ""
   "/var/lib/texmf/web2c/xetex/xelatex.fmt" 1542647855 3559118 230579da8c4b5617148b01ce5cc32ce2 ""
-  "Fig1-1.pdf" 1561383445 7623 4a83421027f155e869fad8348f9f7ff7 ""
-  "Fig1-2.pdf" 1561383464 7744 d0a70f58d19fdc8159a1dcb8c5a5ecb6 ""
-  "Fig1-3.pdf" 1561384814 7737 3060867c11ad1753c157fb5ad3e3253a ""
-  "main.aux" 1561384831 547 1b9f993b2516439e58456ea1fccaf9e0 ""
-  "main.tex" 1561384830 3322 1f8f6ca1ddeadad89924c8c8881d264c ""
+  "Fig1-1.pdf" 1561387283 7744 c79ce7b5e5748bbf6669d176c5f166ac ""
+  "Fig1-2.pdf" 1561387304 19230 ecb9c6be267889f3acfc12ab0ef00c44 ""
+  "Fig1-3.pdf" 1561386933 18506 e87a391829bf28226c2893f82676ddb5 ""
+  "main.aux" 1561387310 547 1b9f993b2516439e58456ea1fccaf9e0 ""
+  "main.tex" 1561387309 3325 1bb8a4f022f41122feb2bd89e6f922b0 ""
   (generated)
   "main.aux"
-  "main.pdf"
   "main.log"
+  "main.pdf"
