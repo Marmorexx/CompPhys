@@ -130,6 +130,21 @@ formerly visible in the deterministic character of our sequence vanishes:
     \caption{Choosing larger values $\rightarrow$ The plot becomes "more random"}
 \end{figure}
 
+Next we create an experiment where the generator rolls dices. For that, we
+normalize our generator to 6, instead of 1 (This will be done in an extra
+\texttt{.py} file to avoid confusion). In this configuration, our random number
+generator generates numbers between 0 and 6. Because those numbers are equally
+distributed, all we need to do is an \texttt{int}-conversion. With that,
+python completely neglects any digits behind the comma. And our random numbers
+will hence be integer values between 0 and 5. \\
+After adding up packets of 10 rolls each, we get a distribution:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=9cm]{Fig1-5.png}
+    \caption{Adding 10 Dice rolls -- Distribution}
+\end{figure}
+The Dice rolls follow a Gaussian Distribution according to the Central Limit
+Theorem.
 % }}}
 
 \end{document}

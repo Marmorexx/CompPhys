@@ -42,13 +42,17 @@ def createarrays(a,m,c,initVal,steps):
 # createarrays(a,m,c,x0,steps) # 
 ################################
 
-r1, rnorm1 = createarrays(1060,60751,12835,1,1000)
-r2, rnorm2 = createarrays(1060,60751,12835,2,1000) #just change initial value
+r1, rnorm1 = createarrays(1060,60751,12835,1,100000)
+r2, rnorm2 = createarrays(1060,60751,12835,2,100000) #just change initial value
+print("Mean Value of sequence 1: mu = {}".format(np.round(np.mean(rnorm1),3)))
+print("Mean Value of sequence 2: mu = {}".format(np.round(np.mean(rnorm2),3)))
 
+#Drawing the random Number plane
 plt.figure()
 plt.scatter(rnorm1, rnorm2, s=5)
 plt.savefig('F_Random_number_plane.pdf')
 
+#Drawing the deterministic character
 plt.figure()
 plt.scatter(rnorm1[:-1], rnorm1[1:], s=10)
 plt.savefig('F_Deterministic_character.pdf')
