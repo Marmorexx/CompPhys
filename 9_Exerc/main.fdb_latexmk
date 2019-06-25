@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1561467786 "main.tex" "main.pdf" "main" 1561467787
+["pdflatex"] 1561470892 "main.tex" "main.pdf" "main" 1561470893
   "/etc/texmf/web2c/texmf.cnf" 1542647551 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
@@ -153,9 +153,9 @@
   "Fig1-3.pdf" 1561386933 18506 e87a391829bf28226c2893f82676ddb5 ""
   "Fig1-4.pdf" 1561387531 22707 f7ebe77db81d6f659101405ce8665c2a ""
   "Fig1-5.png" 1561467749 67027 1686f3238041017bb1d76c200a44817a ""
-  "main.aux" 1561467787 819 9414ddf569aa897b608ef79146942e39 ""
-  "main.tex" 1561467786 4746 46120ceaa77fe1a31d065c70446483f2 ""
+  "main.aux" 1561470893 1029 00ad5b9ae1e7deee2cf2d2674986e95d ""
+  "main.tex" 1561470892 5659 a96881013aa3a1e711d8987de242d7ef ""
   (generated)
-  "main.pdf"
   "main.log"
   "main.aux"
+  "main.pdf"
