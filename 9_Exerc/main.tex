@@ -123,7 +123,9 @@ To see the deterministic character of this random number sequence, we plot
 Again, overall the generator appears random, yet small patterns can still be seen.
 This effect can be midigated, by choosing larger values for a, m, and c.
 For example, for \( a = 1060, m = 60751, c = 12835 \), the small patterns,
-formerly visible in the deterministic character of our sequence vanishes:
+formerly visible in the deterministic character of our sequence vanishes. (Note,
+that choosing prime numbers for \( m \) further counteracts the formation of
+patterns)
 \begin{figure}[H]
     \centering
     \includegraphics[width=9cm]{Fig1-4.pdf}
@@ -152,9 +154,8 @@ Theorem.
 
 We consider a probablity distribution function given in the domain [0,a) by
 \begin{align}
-    p(x) = bx
+    p(x) = bx \label{2.1}
 \end{align}
-
 \begin{figure}[H]
     \centering
     \begin{tikzpicture}
@@ -171,13 +172,98 @@ We consider a probablity distribution function given in the domain [0,a) by
     \end{tikzpicture}
     \caption{Probability disribution $p(x)$}
 \end{figure}
-
-To norm this distribution, we simply set the area below the function equal to 1:
+To norm this distribution, we simply set the value of f(x) at x = a to 1:
 \begin{align} \nonumber
-    A &= \int _0^a bx \ dx \stackrel{!}{=} 1
-    = \left[ \frac{1}{2} b x^2 \right]_0^a \\
-    &\Rightarrow b = \frac{2}{a^2}
+    f(a) &\stackrel{!}{=} 1 \\
+    &\Rightarrow b \cdot a = 1 \Rightarrow b = \frac{1}{a}
 \end{align}
+Now we plot again our random number plane, but with the condition, that
+\(s_i < f(x_i), \ \text{with} \ x_i = r_i \cdot a\) 
+Lastly, we plot a histogram with our generated values, to see if the histogram
+indeed follows equation (\ref{2.1}). We experiment with different setsizes:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=12cm]{Fig2-1.png}
+    \caption{Distribution function \( p(x) \)}
+\end{figure}
+The Histogram has the right shape. However, there seems to be something wrong 
+with its normalization. Instead of being normalized to 1, it normalizes to
+a value larger than one. \color{red!90!black} This error has not yet been
+resolved help please. \color{black}
 % }}}
+
+% {{{ Exercise 3
+\section{Determine \( \pi \) with random numbers RN}
+Lastly we use the same restriction method as before but with the function
+\begin{align}
+    f(x) = \sqrt{1-x^2} \ \text{for} \ 0 \leq x \leq 1.
+\end{align}
+Implementing this into code:
+\begin{lstlisting}
+def rejectionmethod(a,m,c,initVal,steps):
+    # initialize with any starting value
+    init(initVal)
+
+    # Create Random number distribution
+    r_i = ([])
+    s_i = ([])
+    rej = 0
+    acc = 0
+    for i in range(steps):
+        tmpr = generate_random(a,m,c)/(m-1) # r_i
+        tmps = generate_random(a,m,c)/(m-1) # s_i
+	f_x = np.sqrt(1-tmpr**2)	    # f(x_i) = b*x_i
+        if (tmps < f_x): 
+            r_i.append(tmpr)
+            s_i.append(tmps)
+            acc+=1			    # Count accepted values
+        else: 
+            rej+=1			    # Count rejected values
+    return r_i, s_i, acc, rej
+\end{lstlisting}
+Using one quadrant of the coordinate system \( (x, f(x) > 0 \), we generate
+numbers inside of a quarter of a circle. By dividing the accepted values by
+the total number of random numbers, we can estimate the number \( \pi/4 \):
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=12cm]{Fig3-1.pdf}
+    \caption{Approximating \( \pi \) with random numbers}
+\end{figure}
+Its obvious, that the accuracy of this procedure strongly depends on the amount
+of generated numbers, so we rewrite the former code, to iterate through
+different stepsizes (for different orders of magnitudes):
+\begin{lstlisting}
+def rejectionmethod(a,m,c,initVal,N):
+    # initialize with any starting value
+    init(initVal)
+
+    pi_estimations = np.ndarray((len(N)))
+    for setsize in enumerate(N):
+        acc = 0
+        print(r'Approximating $\pi$ with ', setsize[1], ' random numbers...')
+        for i in range(setsize[1]):
+            tmpr = generate_random(a,m,c)/(m-1) # r_i
+            tmps = generate_random(a,m,c)/(m-1) # s_i
+            f_x = np.sqrt(1-tmpr**2)     # f(x_i) = b*x_i
+            if (tmps < f_x): 
+                acc+=1
+        pi_estimations[setsize[0]] = (acc/setsize[1]*4)
+    return pi_estimations
+\end{lstlisting}
+For this function, we choose an array of setsizes \texttt{N} that range between
+\( 100 \) and \( 10^n \) with \( n > 2 \) being our desired maximum order of
+magnitude. We then plot the Accuracy of our approximated \( \pi \) as a
+function of the setsize:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=9cm]{Fig3-2.pdf}
+    \caption{Accuracy of $pi$ as a function of the setsize $n$}
+\end{figure}
+Note: This method is not a really good method to approximate \( \pi \) since
+our random generator is slightly imperfect. Even for really high values of
+\( a, m, \ \text{and} \ c \), tiny patterns emerge and offset the value for
+\( \pi \) a little.
+% }}}
+
 \end{document}
 

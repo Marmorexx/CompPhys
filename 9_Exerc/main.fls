@@ -250,4 +250,13 @@ INPUT Fig1-2.pdf
 INPUT Fig1-3.pdf
 INPUT Fig1-4.pdf
 INPUT Fig1-5.png
+INPUT Fig2-1.png
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmex10.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
+INPUT Fig3-1.pdf
+INPUT Fig3-2.pdf
 INPUT main.aux
