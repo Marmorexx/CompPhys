@@ -21,7 +21,6 @@ def rejectionmethod(a,m,c,A,initVal,steps):
     print("Creating Distribution...")
     r_i = ([])
     s_i = ([])
-    b = 1/A
     # Create a progress bar
     bar = progressbar.ProgressBar(maxval=steps, \
             widgets=[progressbar.Bar('=', '[', ']'), ' ',
@@ -32,7 +31,7 @@ def rejectionmethod(a,m,c,A,initVal,steps):
         tmpr = generate_random(a,m,c)/(m-1) # r_i
         tmps = generate_random(a,m,c)/(m-1) # s_i
         x = A * tmpr    # x_i = a*r_i
-        f_x = b * x     # f(x_i) = b*x_i
+        f_x = x/A     # f(x_i) = b*x_i
         if (tmps < f_x): 
             r_i.append(x)
             s_i.append(tmps)
@@ -61,11 +60,11 @@ plt.title('n = {}'.format(steps1))
 plt.scatter(r1,s1,s=5)
 plt.subplot(223)
 plt.hist(r1, normed=1)      #TODO Doesnt Norm to 1... Scaling is wrong
-plt.plot(x, 2*x)
+plt.plot(x, 2*x/A**2)
 plt.subplot(222)
 plt.title('n = {}'.format(steps2))
 plt.scatter(r2,s2,s=1)
 plt.subplot(224)
 plt.hist(r2,50,normed=1)    #TODO Doesnt Norm to 1.. Scaling is wrong
-plt.plot(x, 1/A*x)
+plt.plot(x, 2*x/A**2)
 plt.show()
