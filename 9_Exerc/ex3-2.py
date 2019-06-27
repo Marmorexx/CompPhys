@@ -39,10 +39,10 @@ def rejectionmethod(a,m,c,initVal,steps):
         print("pi = {}".format(acc/setsize[1]*4))
     return pi_estimations
 
-#########################################################################
-##Choose the maximum order of magnitude you want to approximate pi with##
+####################### Choose plot parameters ##########################
+
 oom = 7         # orders of magnitude to be calculated                  
-density = 1    # Relative Data density (integer > 1)                   
+density = 1     # Relative Data density (integer > 1)                   
 #NOTE Don't choose o.o.m larger than 6 to avoid long computation times    
 #########################################################################
 

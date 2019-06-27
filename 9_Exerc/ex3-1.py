@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import progressbar
 
 plt.style.use('bmh')
 
@@ -22,26 +23,36 @@ def rejectionmethod(a,m,c,initVal,steps):
     s_i = ([])
     rej = 0
     acc = 0
+    # Create a progress bar
+    bar = progressbar.ProgressBar(maxval=steps, \
+            widgets=[progressbar.Bar('=', '[', ']'), ' ',
+            progressbar.Percentage()])
+    bar.start()
     for i in range(steps):
+        bar.update(i+1)
         tmpr = generate_random(a,m,c)/(m-1) # r_i
         tmps = generate_random(a,m,c)/(m-1) # s_i
         f_x = np.sqrt(1-tmpr**2)     # f(x_i) = b*x_i
         if (tmps < f_x): 
             r_i.append(tmpr)
             s_i.append(tmps)
-            #print("value {} accepted".format(round(tmps,2)))
             acc+=1
-        else: 
-            #print("value {} rejected".format(round(tmps,2)))
-            rej+=1
-    return r_i, s_i, acc, rej
+    bar.finish()
+    return r_i, s_i, acc
 
-steps1, steps2 = int(1e3), int(1e6)
-r1, s1, acc1, rej1 = rejectionmethod(1060, 96911, 12835, 1, steps1)
-r2, s2, acc2, rej2 = rejectionmethod(1060, 96911, 12835, 1, steps2)
+###################### Input Parameters #######################
+a = 1060
+m = 96911
+c = 12835
+initVal = 1
+steps1, steps2 = int(1e3), int(1e6) # Iterations
+###############################################################
 
-pi1 = r'$\pi \approx$ '+str(acc1/(acc1+rej1)*4)
-pi2 = r'$\pi \approx$ '+str(acc2/(acc2+rej2)*4)
+r1, s1, acc1 = rejectionmethod(a, m, c, initVal, steps1)
+r2, s2, acc2 = rejectionmethod(a, m, c, initVal, steps2)
+
+pi1 = r'$\pi \approx$ '+str(acc1/steps1*4)
+pi2 = r'$\pi \approx$ '+str(acc2/steps2*4)
 
 plt.figure(figsize=(11,5))
 plt.tight_layout()
@@ -53,7 +64,7 @@ plt.legend()
 
 plt.subplot(122)
 plt.title('n = {}'.format(steps2))
-plt.scatter(r2[::100],s2[::100],s=1, label=pi2)
-plt.legend()
+plt.scatter(r2[::100],s2[::100],s=1, label=pi2) # just plot every 100th point
+plt.legend()                                    # to avoid big filesizes
 
 plt.show()

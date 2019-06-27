@@ -39,7 +39,8 @@ We write a simple portable random number generator, using linear congruences:
     I _{j+1} = a I _{j} + c \ ( \text{mod} \ m )
     \label{LinearCongruence}
 \end{align}
-For that, we creat an initiation function, that creates a global Variable.
+
+For that, we create an initiation function, that creates a global Variable.
 
 \begin{lstlisting}
 def init(initVal):
@@ -57,7 +58,7 @@ def generate_random(a,m,c,initVal):
     return rand
 \end{lstlisting}
 
-This function produces homogeneously distributed numbers between 0 and m-1.
+This function produces homogeneously distributed numbers between 0 and ($m-1$).
 It can be normalized by \( r_i = I_j /(m-1) \), to get homogeneously distributed
 real numbers between 0 and 1. We try it for example for \( a = 106, m = 6075,
 c = 1283\):
@@ -109,12 +110,12 @@ We plot all pairs \( (r_i, s_i) \) of generated numbers in a number plane:
     \caption{Creating a set of random numbers}
 \end{figure}
 
-Since the eye is quite sensitive to see a good distribution. For \( m = 100\) 
+The eye is quite sensitive to see a good distribution. For \( m = 100\) 
 there is no visible pattern. Taking 1000 samples, will result in numbers, that
-appear random at first, but this time there are small patterns forming, that
+appear random at first, however, there are small patterns forming, that
 look like little lines all pointing towards the same direction.
 To see the deterministic character of this random number sequence, we plot
-\( I _{j + 1} \) agains \( I _{j} \) for \( I_0 = 1, \ \text{and} \ n = 1000 \):
+\( I _{j + 1} \) against \( I _{j} \) for \( I_0 = 1, \ \text{and} \ n = 1000 \):
 \begin{figure}[H]
     \centering
     \includegraphics[width=9cm]{Fig1-3.pdf}
@@ -132,7 +133,7 @@ patterns)
     \caption{Choosing larger values $\rightarrow$ The plot becomes "more random"}
 \end{figure}
 
-Next we create an experiment where the generator rolls dices. For that, we
+Next we create an experiment where the generator rolls dice. For that, we
 normalize our generator to 6, instead of 1 (This will be done in an extra
 \texttt{.py} file to avoid confusion). In this configuration, our random number
 generator generates numbers between 0 and 6. Because those numbers are equally
@@ -178,7 +179,7 @@ To norm this distribution, we simply set the value of f(x) at x = a to 1:
     &\Rightarrow b \cdot a = 1 \Rightarrow b = \frac{1}{a}
 \end{align}
 Now we plot again our random number plane, but with the condition, that
-\(s_i < f(x_i), \ \text{with} \ x_i = r_i \cdot a\) 
+\(s_i < f(x_i), \ \) with \( x_i = r_i \cdot a\).
 Lastly, we plot a histogram with our generated values, to see if the histogram
 indeed follows equation (\ref{2.1}). We experiment with different setsizes:
 \begin{figure}[H]
@@ -207,7 +208,6 @@ def rejectionmethod(a,m,c,initVal,steps):
     # Create Random number distribution
     r_i = ([])
     s_i = ([])
-    rej = 0
     acc = 0
     for i in range(steps):
         tmpr = generate_random(a,m,c)/(m-1) # r_i
@@ -217,13 +217,12 @@ def rejectionmethod(a,m,c,initVal,steps):
             r_i.append(tmpr)
             s_i.append(tmps)
             acc+=1			    # Count accepted values
-        else: 
-            rej+=1			    # Count rejected values
-    return r_i, s_i, acc, rej
+    return r_i, s_i, acc
 \end{lstlisting}
-Using one quadrant of the coordinate system \( (x, f(x) > 0 \), we generate
+Using one quadrant of the coordinate system \( (x, f(x) > 0) \), we generate
 numbers inside of a quarter of a circle. By dividing the accepted values by
-the total number of random numbers, we can estimate the number \( \pi/4 \):
+the total number of random numbers generated, and multiplying by \( 4 \),
+we can estimate the number \( \pi \):
 \begin{figure}[H]
     \centering
     \includegraphics[width=12cm]{Fig3-1.pdf}
@@ -257,12 +256,13 @@ function of the setsize:
 \begin{figure}[H]
     \centering
     \includegraphics[width=9cm]{Fig3-2.pdf}
-    \caption{Accuracy of $pi$ as a function of the setsize $n$}
+    \caption{Accuracy of $\pi$ as a function of the setsize $n$}
 \end{figure}
 Note: This method is not a really good method to approximate \( \pi \) since
 our random generator is slightly imperfect. Even for really high values of
 \( a, m, \ \text{and} \ c \), tiny patterns emerge and offset the value for
-\( \pi \) a little.
+\( \pi \) a little. However, with this method, \( \pi \) could be estimated
+with an accuracy of up to 3 decimals.
 % }}}
 
 \end{document}
