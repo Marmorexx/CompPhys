@@ -41,8 +41,8 @@ def rejectionmethod(a,m,c,initVal,steps):
 
 ####################### Choose plot parameters ##########################
 
-oom = 7         # orders of magnitude to be calculated                  
-density = 1     # Relative Data density (integer > 1)                   
+oom = 5         # orders of magnitude to be calculated                  
+density = 100     # Relative Data density (integer > 1)                   
 #NOTE Don't choose o.o.m larger than 6 to avoid long computation times    
 #########################################################################
 

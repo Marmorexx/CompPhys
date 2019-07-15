@@ -45,7 +45,7 @@ a = 1060
 m = 96911
 c = 12835
 initVal = 1
-steps1, steps2 = int(1e3), int(1e6) # Iterations
+steps1, steps2 = int(1e3), int(1e8) # Iterations
 ###############################################################
 
 r1, s1, acc1 = rejectionmethod(a, m, c, initVal, steps1)
@@ -64,7 +64,7 @@ plt.legend()
 
 plt.subplot(122)
 plt.title('n = {}'.format(steps2))
-plt.scatter(r2[::100],s2[::100],s=1, label=pi2) # just plot every 100th point
+plt.scatter(r2[::1000],s2[::1000],s=1, label=pi2) # just plot every 100th point
 plt.legend()                                    # to avoid big filesizes
 
 plt.show()

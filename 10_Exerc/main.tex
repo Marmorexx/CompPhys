@@ -1,4 +1,3 @@
-
 \documentclass{article}
 
 \usepackage[margin=4cm]{geometry}
@@ -24,15 +23,55 @@
 	stringstyle=\color{orange!80!black}}
 \usepackage{tikz}
 
-\title{}
-\author{}
+\title{Computational Physics - Exercise 10}
+\author{Maurice Donner \and Lukas Häffner}
 
 \begin{document}
 
 \maketitle
 \newpage
 
-\section{}
+% {{{ Exercise 1
+\section*{Exercise 2: 1. Importance Sampling}
+\subsection*{Integration with equal distributet random numbers}
+We have to compute the following integral:
+\begin{align}
+I &= \frac{1}{\pi} \int_{-\infty}^{\infty} \exp(-y_1^{2}-y_2^{2}) dy_1 dy_2\\
+&= \frac{1}{\pi} \int_{-\infty}^{\infty} \exp(-y_1^{2}) dy_1 \int_{-\infty}^{\infty} \exp(-y_2^{2}) dy_2\\
+&= \frac{1}{\pi} (\int_{-\infty}^{\infty} \exp(-y^{2}) dy)^2
+\end{align}
+So the problem is solved after the determination of \(\int_{-\infty}^{\infty} \exp(-y^{2}) dy\).
+With equally distributed random numbers the integral of a function is
+\begin{align}
+I = \frac{b-a}{N}\sum\limits_{i=0}^{N} f(x_i)
+\end{align}
+with a, b finite bounds of integration and \(x_i\) equally distributed random numbers inside the bounds of a,b.
+For creating the \(x_i\)'s we use our random number generator from exercise sheet 9. They'll be computed in equally distributed in bounds of [0,1] and then adapted to the integration bounds [a,b] with:
+\begin{align}
+x_i = a + (b-a)*x_{i,[0,1]}
+\end{align}
+We compute the integral \(\int_{-\infty}^{\infty} \exp(-y^{2}) dy\) using equation 4 with n=100000 number of iterations and [a,b]=[-5,5]:
+\[ I = 1.72558741019\]
 
+\subsection*{Integration with weighted random numbers}
+Second we compute the same integral using importance sampling. Here the integral is:
+\begin{align}
+I = \frac{1}{N}\sum\limits_{i=0}^{N} \frac{f(x_i)}{g(x_i)}
+\end{align}
+with \(g(x_i)\) normalized probability density function, near to \(f(x_i)\). We use
+\begin{align}
+g(y) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty} \exp(-y^{2}/2) dy
+\end{align}
+We compute the integral \(\int_{-\infty}^{\infty} \exp(-y^{2}) dy\) using equation 6 with n=10000 number of iterations and [a,b]=[-5,5]:
+\[ I = 1.78053316266\]
+The theoretical solution is \(\int_{-5}^{5} \exp(-y^{2}) dy = 1.77245...\).
+\newpage
+\subsection*{Solutions}
+Now we calculate the results for equation 3 with both solutions of the integral and round them:
+\begin{align*}
+\text{Method equally distributed RN: I} &= 0.9478\\
+\text{Method weighted RN: I} &= 1.0091\\
+\text{Theoretical solution: I} &= 1.0000
+\end{align*}
+Using importance sampling we get the better solution because of a faster convergence.
 \end{document}
-
